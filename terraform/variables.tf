@@ -13,13 +13,13 @@ variable "project_name" {
 variable "domain_name" {
   description = "Your custom domain name"
   type        = string
-  default     = "yourdomain.xyz"  # replace with your actual domain
+  default     = "aleksandermatusik.xyz"  # replace with your actual domain
 }
 
 variable "s3_bucket_name" {
   description = "Name of the S3 bucket hosting the static site"
   type        = string
-  default     = "yourname-portfolio-2025"  # replace with your actual bucket name
+  default     = "aleksandermatusik-portfolio"  # replace with your actual bucket name
 }
 
 variable "dynamodb_table_name" {
