@@ -2,43 +2,36 @@ import json
 import boto3
 import os
 
-# This Lambda function does two things:
-# 1. Increments a visitor counter in DynamoDB
-# 2. Returns the current count to the browser
-
 dynamodb = boto3.resource('dynamodb')
-
-# The table name comes from an environment variable so it's easy to change
 TABLE_NAME = os.environ.get('TABLE_NAME', 'portfolio-visitor-counter')
 
+ALLOWED_ORIGINS = [
+    'https://aleksandermatusik.xyz',
+    'https://www.aleksandermatusik.xyz',
+]
+
 def lambda_handler(event, context):
-    """
-    This function is triggered by API Gateway every time
-    someone visits the portfolio website.
-    """
+    # Check which origin the request is coming from
+    origin = event.get('headers', {}).get('origin', '')
+    
+    allowed_origin = origin if origin in ALLOWED_ORIGINS else ALLOWED_ORIGINS[0]
+
     table = dynamodb.Table(TABLE_NAME)
 
-    # atomic_counter is the key of our counter item in DynamoDB
-    # UpdateExpression: ADD means "add 1 to the visits attribute"
-    # If the attribute doesn't exist yet, DynamoDB creates it starting from 0
     response = table.update_item(
         Key={'id': 'visitor_count'},
         UpdateExpression='ADD visits :inc',
         ExpressionAttributeValues={':inc': 1},
-        ReturnValues='UPDATED_NEW'  # returns the new value after update
+        ReturnValues='UPDATED_NEW'
     )
 
     new_count = int(response['Attributes']['visits'])
 
-    # CORS headers let the browser (running on your CloudFront domain)
-    # talk to the API Gateway (on a different domain)
     return {
         'statusCode': 200,
         'headers': {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',   # CHANGE this to your CloudFront URL in production
-            'Access-Control-Allow-Methods': 'POST, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Origin': allowed_origin,
         },
         'body': json.dumps({'count': new_count})
     }
