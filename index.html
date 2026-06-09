@@ -634,37 +634,31 @@
 </footer>
 
 <script>
-// ── Visitor Counter ──
-const API_URL = 'https://b7lvu5lic1.execute-api.us-east-1.amazonaws.com/views';
+  // Replace with your actual API Gateway Invoke URL
+  const API_URL = 'https://YOUR_API_ID.execute-api.YOUR_REGION.amazonaws.com/visit';
 
-async function updateVisitorCount() {
-  try {
-    const response = await fetch(API_URL, { 
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+  async function updateVisitorCount() {
+    const countEl = document.getElementById('visitor-count');
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+
+      const data = await response.json();
+      countEl.textContent = data.count.toLocaleString(); // e.g. "1,042"
+    } catch (err) {
+      console.error('Visitor counter failed:', err);
+      countEl.textContent = '—'; // silently falls back, doesn't break the page
     }
-
-    const data = await response.json();
-    
-    // The Python backend returns {'views': number}, so we match it here:
-    if (data && data.views !== undefined) {
-      document.getElementById('visitor-count').textContent = data.views.toLocaleString();
-    } else {
-      console.error("API structure unexpected:", data);
-      document.getElementById('visitor-count').textContent = '—';
-    }
-
-  } catch (err) {
-    console.error("Error updating visitor count:", err);
-    document.getElementById('visitor-count').textContent = '—';
   }
-}
+
+  // Run once when the page loads
+  updateVisitorCount();
+</script>
 
 // Run the function when the page loads
 updateVisitorCount();
