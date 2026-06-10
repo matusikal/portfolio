@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ── RESET & BASE ─────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -34,7 +33,6 @@
       overflow-x: hidden;
     }
 
-    /* ── NOISE OVERLAY ────────────────────────────────── */
     body::before {
       content: '';
       position: fixed;
@@ -44,8 +42,6 @@
       z-index: 0;
       opacity: .4;
     }
-
-    /* ── NAV ──────────────────────────────────────────── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -103,8 +99,6 @@
 
     .nav-links a:hover { color: var(--accent); }
     .nav-links a:hover::after { width: 100%; }
-
-    /* ── LAYOUT ───────────────────────────────────────── */
     main {
       padding-top: calc(var(--nav-h) + 60px);
       max-width: 900px;
@@ -117,8 +111,6 @@
     }
 
     section { margin-bottom: 96px; }
-
-    /* ── HERO ─────────────────────────────────────────── */
     .hero {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -197,8 +189,6 @@
       margin-bottom: 6px;
       color: var(--border);
     }
-
-    /* ── SECTION TITLES ───────────────────────────────── */
     .section-title {
       font-family: 'Syne', sans-serif;
       font-size: 1.5rem;
@@ -220,18 +210,12 @@
       border-radius: 2px;
       flex-shrink: 0;
     }
-
-    /* ── ABOUT CARDS (scalable) ───────────────────────── */
     .card-grid {
       display: grid;
       gap: 12px;
     }
 
-    /*
-      ╔══════════════════════════════════════════════════════╗
-      ║  SCALABLE CARD — copy this entire block to add more  ║
-      ╚══════════════════════════════════════════════════════╝
-    */
+
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -301,12 +285,6 @@
       background: var(--surface);
     }
 
-    /* ── PROJECT CARDS (scalable) ─────────────────────── */
-    /*
-      ╔══════════════════════════════════════════════════════╗
-      ║  SCALABLE PROJECT CARD — copy to add more projects   ║
-      ╚══════════════════════════════════════════════════════╝
-    */
     .project-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -374,7 +352,6 @@
 
     .project-card:hover .project-link { color: var(--accent); }
 
-    /* ── CONTACT ──────────────────────────────────────── */
     .contact-list {
       display: flex;
       flex-direction: column;
@@ -420,7 +397,6 @@
       font-size: 13px;
     }
 
-    /* ── FOOTER ───────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
       background: var(--surface);
@@ -438,7 +414,6 @@
 
     footer .accent { color: var(--accent); }
 
-    /* ── SCROLL FADE-IN ───────────────────────────────── */
     .fade-in {
       opacity: 0;
       transform: translateY(18px);
@@ -450,7 +425,6 @@
       transform: translateY(0);
     }
 
-    /* ── RESPONSIVE ───────────────────────────────────── */
     @media (max-width: 640px) {
       nav { padding: 0 20px; }
       main { padding-left: 20px; padding-right: 20px; }
@@ -462,7 +436,6 @@
 </head>
 <body>
 
-  <!-- ══ NAV ══════════════════════════════════════════ -->
   <nav>
     <a href="#hero" class="nav-logo">
       <span class="tilde">~/</span> Aleksander Matusik
@@ -474,7 +447,6 @@
     </ul>
   </nav>
 
-  <!-- ══ MAIN CONTENT ══════════════════════════════════ -->
   <main>
 
  <section id="hero" class="hero fade-in">
@@ -490,7 +462,6 @@
       </div>
     </section>
 
-    <!-- ABOUT ME -->
     <section id="about">
       <h2 class="section-title fade-in">about me</h2>
 
@@ -532,7 +503,6 @@
           </div>
         </div>
 
-        <!-- END COPY BLOCK -->
 
       </div>
     </section>
@@ -543,12 +513,7 @@
 
       <div class="card-grid">
 
-        <!--
-          ╔════════════════════════════════════════════════════╗
-          ║  COPY THIS PROJECT CARD to add more projects       ║
-          ║  Change href="#" to your repo / live URL           ║
-          ╚════════════════════════════════════════════════════╝
-        -->
+
         <a class="project-card fade-in" href="#" target="_blank" rel="noopener">
           <div class="project-meta">
             <div class="project-name">This Portfolio Site</div>
@@ -580,12 +545,10 @@
           <span class="project-link" aria-label="Open project">↗</span>
         </a>
 
-        <!-- END COPY BLOCK -->
 
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact">
       <h2 class="section-title fade-in">get in touch</h2>
 
@@ -629,7 +592,6 @@
 </footer>
 
 <script>
-  // Replace with your actual API Gateway Invoke URL
   const API_URL = 'https://46d9u44hlg.execute-api.us-east-1.amazonaws.com/visit';
 
   async function updateVisitorCount() {
@@ -644,19 +606,17 @@
       if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
 
       const data = await response.json();
-      countEl.textContent = data.count.toLocaleString(); // e.g. "1,042"
+      countEl.textContent = data.count.toLocaleString();
     } catch (err) {
       console.error('Visitor counter failed:', err);
-      countEl.textContent = '—'; // silently falls back, doesn't break the page
+      countEl.textContent = '—'; 
     }
   }
 
-  // Run once when the page loads
   updateVisitorCount();
 </script>
 
 
-  <!-- ══ SCROLL OBSERVER ═══════════════════════════════ -->
   <script>
     const observer = new IntersectionObserver(
       entries => entries.forEach(e => {
