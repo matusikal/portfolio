@@ -28,14 +28,4 @@ graph TD
     GitHub -->|3. Sync Build Artifacts| S3
     GitHub -->|4. Invalidate Cache| CF
 
-    %% Styling
-    style User fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style WAF fill:#ff9999,stroke:#cc0000,stroke-width:1px
-    style CF fill:#ffcc99,stroke:#ff6600,stroke-width:1px
-    style S3 fill:#99ccff,stroke:#0066cc,stroke-width:1px
-    style APIGW fill:#ccffcc,stroke:#00cc00,stroke-width:1px
-    style Lambda fill:#ffff99,stroke:#cccc00,stroke-width:1px
-    style DynamoDB fill:#d9b3ff,stroke:#6600cc,stroke-width:1px
-    style GitHub fill:#ebebeb,stroke:#666,stroke-width:1px
-    style IAM fill:#ffb3d9,stroke:#cc0066,stroke-width:1px
 ```
