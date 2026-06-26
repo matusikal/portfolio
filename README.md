@@ -11,14 +11,14 @@ The following diagram illustrates the end-to-end architecture of the portfolio a
 ```mermaid
 graph TD
     %% Users and Frontend Edge
-    User([User Browser]) -->|HTTPS Requests| WAF[AWS WAF <br><small>Rate Limiting & Protection</small>]
-    WAF --> CF[Amazon CloudFront <br><small>CDN & Edge Caching</small>]
-    CF -->|Fetch Static Assets| S3[(Amazon S3 <br><small>Static Website Bucket</small>)]
+    User([User Browser]) -->|HTTPS Requests| WAF[AWS WAF <small>Rate Limiting & Protection</small>]
+    WAF --> CF[Amazon CloudFront <small>CDN & Edge Caching</small>]
+    CF -->|Fetch Static Assets| S3[(Amazon S3 <small>Static Website Bucket</small>)]
 
     %% Backend API Flow
-    User -->|API Call: Update/Get Count| APIGW[API Gateway <br><small>HTTP API</small>]
-    APIGW -->|Trigger Function| Lambda[AWS Lambda <br><small>Visitor Counter Logic</small>]
-    Lambda -->|Atomic Update / Query| DynamoDB[(Amazon DynamoDB <br><small>Logging Counter Table</small>)]
+    User -->|API Call: Update/Get Count| APIGW[API Gateway <small>HTTP API</small>]
+    APIGW -->|Trigger Function| Lambda[AWS Lambda <small>Visitor Counter Logic</small>]
+    Lambda -->|Atomic Update / Query| DynamoDB[(Amazon DynamoDB <small>Logging Counter Table</small>)]
 
     %% CI/CD Deployment Pipeline
     GitHub[GitHub Actions Pipeline] -->|1. Authenticate via OIDC| IAM[AWS IAM <br><small>OIDC Provider / AssumeRole</small>]
