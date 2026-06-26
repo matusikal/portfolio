@@ -98,6 +98,6 @@ After successful GitHub Action deployments to S3, changes on the live domain did
 
     Enhanced Monitoring & Dashboarding: Configure Amazon CloudWatch Alarms to trigger email or Slack alerts via Amazon SNS if API Gateway errors surge or if AWS WAF drops excessive requests.
 
-    Automated Testing: Implement integration testing workflows in GitHub Actions using tools like Cypress to validate the UI and backend functionality on a staging domain before merging to production.
+Automated Testing: Implement integration testing workflows in GitHub Actions using tools like Cypress to validate the UI and backend functionality on a staging domain before merging to production.
    
 ---
