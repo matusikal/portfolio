@@ -1,4 +1,0 @@
-# Ignore the terraform folder and its contents anywhere in the project
-**/terraform/.terraform/
-**/.terraform/
-.terraform/
