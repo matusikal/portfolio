@@ -469,23 +469,26 @@
 
         <div class="card fade-in">
           <span class="card-label">background</span>
-          <span class="card-title">Who I am</span>
+          <span class="card-title">From the field to the cloud</span>
           <p class="card-body">
-            Some info about me — where I studied, what drives me, what I'm currently
-            learning or working towards. Keep it short and punchy.
+            Spent years learning computer science, want to put passion into working with great people in the same field.
           </p>
+          <div class="card-tags">
+            <span class="tag">Computer Science</span>
+            <span class="tag">Technology</span>
+          </div>
         </div>
 
         <div class="card fade-in">
           <span class="card-label">education</span>
-          <span class="card-title">School / University</span>
+          <span class="card-title">AGH University</span>
           <p class="card-body">
-            Degree or program name · Year – Year. Relevant coursework, thesis topic,
-            or academic highlights go here.
+            Postgraduate studies in Practical Cybersecurity. Also hold a Bachelor's degree in National Security and IT Technician qualifications (EE.08, EE.09).
           </p>
           <div class="card-tags">
             <span class="tag">Computer Science</span>
             <span class="tag">Networking</span>
+            <span class="tag">National Security</span>
           </div>
         </div>
 
@@ -493,8 +496,7 @@
           <span class="card-label">certifications</span>
           <span class="card-title">AWS Cloud Practitioner</span>
           <p class="card-body">
-            Issued by Amazon Web Services · Month Year. Add a brief line about
-            what the cert covers or what you gained from it.
+            Issued by Amazon Web Services. Covers core AWS services, security, billing, and architecture fundamentals — currently building on this with the Solutions Architect Associate (SAA-C03), exam scheduled for July 2026.
           </p>
           <div class="card-tags">
             <span class="tag">AWS</span>
@@ -503,43 +505,94 @@
           </div>
         </div>
 
+        <div class="card fade-in">
+          <span class="card-label">experience</span>
+          <span class="card-title">1000+ hours of hands-on IT internships</span>
+          <p class="card-body">
+              Completed internships in municipal services, local government IT, and software development. Built practical experience with IT support, database-driven systems, software development, and enterprise environments before focusing on AWS and cloud engineering.
+          </p>
+          <div class="card-tags">
+            <span class="tag">IT support</span>
+            <span class="tag">Development</span>
+            <span class="tag">Databases</span>
+          </div>
+        </div>
+
 
       </div>
     </section>
 
-    <!-- MY PROJECTS -->
     <section id="projects">
       <h2 class="section-title fade-in">my projects</h2>
 
       <div class="card-grid">
 
 
-        <a class="project-card fade-in" href="#" target="_blank" rel="noopener">
+        <a class="project-card fade-in" href="https://github.com/matusikal/portfolio" target="_blank" rel="noopener">
           <div class="project-meta">
             <div class="project-name">This Portfolio Site</div>
             <div class="project-desc">
-              Static personal portfolio — built with plain HTML, CSS and a sprinkle
-              of vanilla JS. No frameworks, no build step.
+              Static personal portfolio built with HTML, CSS, and vanilla JS. Hosted on s3 bucket with CloudFront as a delivery. Visitor counter used, setup with lambda, DynamoDB and API Gateway. Domain registered through Namecheap.
             </div>
             <div class="project-tags">
               <span class="tag">HTML</span>
               <span class="tag">CSS</span>
               <span class="tag">JS</span>
+              <span class="tag">s3+cloudfront</span>
+              <span class="tag">lambda</span>
+              <span class="tag">dynabodb+apigateway</span>
             </div>
           </div>
           <span class="project-link" aria-label="Open project">↗</span>
         </a>
 
-        <a class="project-card fade-in" href="#" target="_blank" rel="noopener">
+        <a class="project-card fade-in" href="https://github.com/matusikal/alb-asg-project" target="_blank" rel="noopener">
           <div class="project-meta">
             <div class="project-name">Project Two</div>
             <div class="project-desc">
-              Short description of what this project does, the problem it solves,
-              and anything noteworthy about the implementation.
+             Interactive site with button simulating real traffic on site. Built around an Application Load Balancer distributing traffic across multiple EC2 instances, CloudWatch dashboard will be added for cpu usage monitoring. Entire infrastructure defined in Terraform, no manual console steps.
             </div>
             <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">AWS Lambda</span>
+              <span class="tag">EC2</span>
+              <span class="tag">ASG</span>
+              <span class="tag">ALB</span>
+              <span class="tag">GitHub Actions OICD</span>
+              <span class="tag">ACM</span>
+              <span class="tag">s3</span>
+              <span class="tag">IAM</span>
+              <span class="tag">CloudWatch</span>
+              <span class="tag">Terraform</span>
+              <span class="tag">VPC</span>
+            </div>
+          </div>
+          <span class="project-link" aria-label="Open project">↗</span>
+        </a>
+
+          <a class="project-card fade-in" href="https://github.com/matusikal/containers" target="_blank" rel="noopener">
+          <div class="project-meta">
+            <div class="project-name">Daily Journal app</div>
+            <div class="project-desc">
+              A journaling app with email-based registration and token verification, deployed end to end on AWS. Backend runs on ECS Fargate with a PostgreSQL database on RDS, sitting inside a private VPC with NAT Gateway for outbound access. ALB routes traffic from API to ECS. Built entirely from the ground up in Terraform, containerized with Docker, with secrets and authentication handled by AWS-native services rather than custom code.
+            </div>
+            <div class="project-tags">
+              <span class="tag">ECS Fargate</span>
+              <span class="tag">ECR</span>
+              <span class="tag">RDS PostgreSQL</span>
+              <span class="tag">ALB</span>
+              <span class="tag">CloudFront</span>
+              <span class="tag">VPC+NAT Gateway</span>
+              <span class="tag">Cognito</span>
+              <span class="tag">Secrets Manager</span>
+              <span class="tag">API Gateway</span>
+              <span class="tag">ACM</span>
+              <span class="tag">s3</span>
+              <span class="tag">IAM</span>
+              <span class="tag">CloudWatch</span>
+              <span class="tag">Terraform</span>
+              <span class="tag">Docker</span>
+              <span class="tag">GitHub Actions CI/CD</span>
+              <span class="tag">Terraform</span>
+
             </div>
           </div>
           <span class="project-link" aria-label="Open project">↗</span>
@@ -560,10 +613,10 @@
           <span class="contact-value">matusikolek@gmail.com</span>
         </a>
 
-        <a class="contact-item fade-in" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">
+        <a class="contact-item fade-in" href="https://www.linkedin.com/in/aleksander-matusik-162770412/" target="_blank" rel="noopener">
           <span class="contact-icon">in</span>
           <span class="contact-label">linkedin</span>
-          <span class="contact-value">linkedin.com/in/yourprofile</span>
+          <span class="contact-value">linkedin.com/in/aleksander-matusik</span>
         </a>
 
         <a class="contact-item fade-in" href="https://github.com/matusikal" target="_blank" rel="noopener">
@@ -575,7 +628,7 @@
         <div class="contact-item fade-in" style="cursor:default;">
           <span class="contact-icon">◎</span>
           <span class="contact-label">location</span>
-          <span class="contact-value">Your City, Country</span>
+          <span class="contact-value">Nowy Targ, Poland</span>
         </div>
 
       </div>
